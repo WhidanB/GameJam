@@ -7,7 +7,7 @@ import SceneKeys from "./consts/SceneKeys";
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   parent: "app",
-  width: 800,
+  width: 1900,
   height: 640,
   physics: {
     default: "arcade",

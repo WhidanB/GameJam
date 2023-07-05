@@ -4,15 +4,16 @@ import TextureKeys from "../consts/TextureKeys";
 import AnimationKeys from "../consts/AnimationKeys";
 
 export default class RocketMouse extends Phaser.GameObjects.Container {
-  private flames: Phaser.GameObjects.Sprite;
   private cursors: Phaser.Types.Input.Keyboard.CursorKeys;
   private mouse: Phaser.GameObjects.Sprite;
+  private isJumping: boolean;
 
   constructor(scene: Phaser.Scene, x: number, y: number) {
     super(scene, x, y);
 
-    //Get CursorKeys Instance
+    // Get CursorKeys Instance
     this.cursors = scene.input.keyboard.createCursorKeys();
+    this.isJumping = false;
 
     // Create a rocketmouse Sprite:
     this.mouse = scene.add
@@ -20,53 +21,45 @@ export default class RocketMouse extends Phaser.GameObjects.Container {
       .setOrigin(0.5, 1)
       .play(AnimationKeys.RocketMouseRun);
 
-    //create the flames and play the aimation:
-    this.flames = scene.add
-      .sprite(-63, -15, TextureKeys.RocketMouse)
-      .play(AnimationKeys.RocketFlamesOn);
-
-    this.enableJetpack(false);
-
-    // Add the RocketMosue and flames as childs of Container:
-    this.add(this.flames); //Flame first  = behind the mouse
+    // Add the RocketMouse as a child of Container:
     this.add(this.mouse);
 
     // Add a physics body:
     scene.physics.add.existing(this);
 
-    // adjust physics body size and offset:
+    // Adjust physics body size and offset:
     const body = this.body as Phaser.Physics.Arcade.Body;
-    body.setSize(this.mouse.width - 29, this.mouse.height);
+    body.setSize(this.mouse.width - 29, this.mouse.height + 30);
     body.setOffset(this.mouse.width * -0.5, -this.mouse.height);
+
+    // Add space key event handler
+    scene.input.keyboard.on('keydown-SPACE', () => {
+      this.handleJump();
+    });
   }
 
   preUpdate() {
     const body = this.body as Phaser.Physics.Arcade.Body;
 
-    //check if Space bar is down:
-    if (this.cursors.space?.isDown) {
-      //set y acceleration
-      body.setAccelerationY(-900);
-      //change enableJetpack Status:
-      this.enableJetpack(true);
-      //play the flying animation
-      this.mouse.play(AnimationKeys.RocketMouseFly);
-    } else {
-      //turn off acceleration otherwise:
-      body.setAccelerationY(0);
-      this.enableJetpack(false);
-    }
-
-    if (body.blocked.down) {
-      //play run when touching the ground:
+    if (body.blocked.down && !this.isJumping) {
       this.mouse.play(AnimationKeys.RocketMouseRun, true);
     } else if (body.velocity.y > 0) {
-      //play fall animation when y valocity is positive
       this.mouse.play(AnimationKeys.RocketMouseFall, true);
     }
   }
 
-  enableJetpack(enabled: boolean) {
-    this.flames.setVisible(enabled);
+  handleJump() {
+    const body = this.body as Phaser.Physics.Arcade.Body;
+
+    if (body.blocked.down) {
+      body.setVelocityY(-400);
+      this.mouse.play(AnimationKeys.RocketMouseJump);
+      this.isJumping = true;
+
+      // Reset isJumping flag after a short delay
+      this.scene.time.delayedCall(200, () => {
+        this.isJumping = false;
+      });
+    }
   }
 }
