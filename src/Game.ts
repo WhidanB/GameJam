@@ -23,14 +23,16 @@ export default class Game extends Phaser.Scene {
       .setOrigin(0, 0)
       .setScrollFactor(0, 0);
 
-    const mouse = new RocketMouse(this, width * 0.5, height - 30);
+    const mouse = new RocketMouse(this, 5, height - 30);
     this.add.existing(mouse);
+    
 
     const body = mouse.body as Phaser.Physics.Arcade.Body;
     body.setCollideWorldBounds(true);
+    
 
     //Set mouse x velocity:
-    body.setVelocityX(200);
+    body.setVelocityX(50);
 
     this.physics.world.setBounds(0, 0, Number.MAX_SAFE_INTEGER, height - 30);
 

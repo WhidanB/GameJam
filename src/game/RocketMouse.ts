@@ -18,6 +18,7 @@ export default class RocketMouse extends Phaser.GameObjects.Container {
     // Create a rocketmouse Sprite:
     this.mouse = scene.add
       .sprite(0, 0, TextureKeys.RocketMouse)
+      .setScale(0.3)
       .setOrigin(0.5, 1)
       .play(AnimationKeys.RocketMouseRun);
 
@@ -29,8 +30,8 @@ export default class RocketMouse extends Phaser.GameObjects.Container {
 
     // Adjust physics body size and offset:
     const body = this.body as Phaser.Physics.Arcade.Body;
-    body.setSize(this.mouse.width - 29, this.mouse.height + 30);
-    body.setOffset(this.mouse.width * -0.5, -this.mouse.height);
+    body.setSize(this.mouse.width, this.mouse.height);
+    body.setOffset(this.mouse.width, -this.mouse.height);
 
     // Add space key event handler
     scene.input.keyboard.on('keydown-SPACE', () => {
