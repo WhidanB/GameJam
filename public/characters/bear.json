@@ -1,0 +1,83 @@
+{
+	"textures": [
+		{
+			"image": "bear.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 817,
+				"h": 473
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "bearwalk1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1329,
+						"h": 869
+					},
+					"spriteSourceSize": {
+						"x": 551,
+						"y": 195,
+						"w": 293,
+						"h": 471
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 293,
+						"h": 471
+					}
+				},
+				{
+					"filename": "bearjump.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1329,
+						"h": 869
+					},
+					"spriteSourceSize": {
+						"x": 542,
+						"y": 195,
+						"w": 267,
+						"h": 471
+					},
+					"frame": {
+						"x": 296,
+						"y": 1,
+						"w": 267,
+						"h": 471
+					}
+				},
+				{
+					"filename": "bearwalk2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1329,
+						"h": 869
+					},
+					"spriteSourceSize": {
+						"x": 551,
+						"y": 195,
+						"w": 251,
+						"h": 471
+					},
+					"frame": {
+						"x": 565,
+						"y": 1,
+						"w": 251,
+						"h": 471
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:987f8d061e3278932fa330a793ddb9cf:89e67d842973c03ab7c61dc9754effc3:6295e075e3238db0ec40ff984cf0523c$"
+	}
+}

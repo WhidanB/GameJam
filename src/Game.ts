@@ -2,8 +2,8 @@ import Phaser from "phaser";
 import SceneKeys from "./consts/SceneKeys";
 import AnimationKeys from "./consts/AnimationKeys";
 import TextureKeys from "./consts/TextureKeys";
-import RocketMouse from "./game/RocketMouse";
-import LaserObstacle from "./game/LaserObstacle";
+import Bear from "./game/Bear";
+
 
 export default class Game extends Phaser.Scene {
   constructor() {
@@ -23,20 +23,20 @@ export default class Game extends Phaser.Scene {
       .setOrigin(0, 0)
       .setScrollFactor(0, 0);
 
-    const mouse = new RocketMouse(this, 5, height - 30);
-    this.add.existing(mouse);
+    const bear = new Bear(this, width * 0.5, height);
+    this.add.existing(bear);
     
 
-    const body = mouse.body as Phaser.Physics.Arcade.Body;
+    const body = bear.body as Phaser.Physics.Arcade.Body;
     body.setCollideWorldBounds(true);
     
 
-    //Set mouse x velocity:
+    //Set bear x velocity:
     body.setVelocityX(50);
 
     this.physics.world.setBounds(0, 0, Number.MAX_SAFE_INTEGER, height - 30);
 
-    this.cameras.main.startFollow(mouse);
+    this.cameras.main.startFollow(bear);
     this.cameras.main.setBounds(0, 0, Number.MAX_SAFE_INTEGER, height);
   }
 

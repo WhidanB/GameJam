@@ -3,9 +3,9 @@ import Phaser, { Scene } from "phaser";
 import TextureKeys from "../consts/TextureKeys";
 import AnimationKeys from "../consts/AnimationKeys";
 
-export default class RocketMouse extends Phaser.GameObjects.Container {
+export default class Bear extends Phaser.GameObjects.Container {
   private cursors: Phaser.Types.Input.Keyboard.CursorKeys;
-  private mouse: Phaser.GameObjects.Sprite;
+  private bear: Phaser.GameObjects.Sprite;
   private isJumping: boolean;
 
   constructor(scene: Phaser.Scene, x: number, y: number) {
@@ -15,23 +15,23 @@ export default class RocketMouse extends Phaser.GameObjects.Container {
     this.cursors = scene.input.keyboard.createCursorKeys();
     this.isJumping = false;
 
-    // Create a rocketmouse Sprite:
-    this.mouse = scene.add
-      .sprite(0, 0, TextureKeys.RocketMouse)
+    // Create a rocketbear Sprite:
+    this.bear = scene.add
+      .sprite(0, 0, TextureKeys.Bear)
       .setScale(0.3)
       .setOrigin(0.5, 1)
-      .play(AnimationKeys.RocketMouseRun);
+      .play(AnimationKeys.BearWalk);
 
-    // Add the RocketMouse as a child of Container:
-    this.add(this.mouse);
+    // Add the Rocketbear as a child of Container:
+    this.add(this.bear);
 
     // Add a physics body:
     scene.physics.add.existing(this);
 
     // Adjust physics body size and offset:
     const body = this.body as Phaser.Physics.Arcade.Body;
-    body.setSize(this.mouse.width, this.mouse.height);
-    body.setOffset(this.mouse.width, -this.mouse.height);
+    body.setSize(80, 145);
+    body.setOffset(-30, -200);
 
     // Add space key event handler
     scene.input.keyboard.on('keydown-SPACE', () => {
@@ -43,9 +43,9 @@ export default class RocketMouse extends Phaser.GameObjects.Container {
     const body = this.body as Phaser.Physics.Arcade.Body;
 
     if (body.blocked.down && !this.isJumping) {
-      this.mouse.play(AnimationKeys.RocketMouseRun, true);
+      this.bear.play(AnimationKeys.BearWalk, true);
     } else if (body.velocity.y > 0) {
-      this.mouse.play(AnimationKeys.RocketMouseFall, true);
+      this.bear.play(AnimationKeys.BearFall, true);
     }
   }
 
@@ -53,8 +53,8 @@ export default class RocketMouse extends Phaser.GameObjects.Container {
     const body = this.body as Phaser.Physics.Arcade.Body;
 
     if (body.blocked.down) {
-      body.setVelocityY(-400);
-      this.mouse.play(AnimationKeys.RocketMouseJump);
+      body.setVelocityY(-600);
+      this.bear.play(AnimationKeys.BearJump);
       this.isJumping = true;
 
       // Reset isJumping flag after a short delay
