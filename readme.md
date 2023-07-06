@@ -1,3 +1,5 @@
+/!\ Nécessite d'exécuter un npm install dans un terminal puis d'un npm run start /!\
+
 Projet de Jeu Vidéo : Aurora's Quest
 
 Bienvenue dans le README du projet de jeu vidéo intitulé "Aurora's Quest" ! Ce document vous fournira un aperçu du concept, des fonctionnalités et de l'objectif du jeu.
