@@ -9,7 +9,7 @@ export default class Preloader extends Phaser.Scene {
   }
 
   preload() {
-    //load background image
+  
     this.load.image(TextureKeys.Background, "house/background2.png");
     this.load.image(TextureKeys.Essaim, "house/essaim.png");
     this.load.image(TextureKeys.Banquise, "house/banquise.png" );
@@ -19,7 +19,7 @@ export default class Preloader extends Phaser.Scene {
     this.load.image(TextureKeys.End, "house/End.png")
     
 
-    //lad sprite sheet with texturePacker:
+  
     this.load.atlas(
       TextureKeys.Bear,
       "characters/bear.png",
@@ -28,25 +28,25 @@ export default class Preloader extends Phaser.Scene {
   }
 
   create() {
-    //Mouse run animation
+  
     this.anims.create({
-      key: AnimationKeys.BearWalk, //name key of the animation
-      //helper to generate frames
+      key: AnimationKeys.BearWalk, 
+    
       frames: this.anims.generateFrameNames(TextureKeys.Bear, {
         start: 1,
         end: 2,
         prefix: "bearwalk",
-        // zeroPad: 2,
+       
         suffix: ".png",
       }),
       frameRate: 4,
-      repeat: -1, // -1 to loop forever
+      repeat: -1, 
     });
 
-    //fly animation:
+ 
     this.anims.create({
       key: AnimationKeys.BearJump,
-      //ganarate frames:
+    
       frames: [
         {
           key: TextureKeys.Bear,
@@ -55,10 +55,10 @@ export default class Preloader extends Phaser.Scene {
       ],
     });
 
-    //fall animation:
+  
     this.anims.create({
       key: AnimationKeys.BearFall,
-      //ganarate frames:
+     
       frames: [
         {
           key: TextureKeys.Bear,

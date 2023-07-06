@@ -40,7 +40,7 @@ export default class Game extends Phaser.Scene {
     });
     
     for (let i = 0; i < 6; i++) {
-      const x = Phaser.Math.Between(200, 5360);
+      const x = Phaser.Math.Between(600, 5360);
       const y = height;
 
       const trou = this.trous.get(x, y, 'platform');
@@ -128,13 +128,13 @@ export default class Game extends Phaser.Scene {
   }
 
   handleEssaimCollision(bear, essaim) {
-    // Incrémente le score
+
     this.score++;
   
-    // Détruit l'essaim qui a été ramassé
+
     essaim.destroy();
   
-    // Affiche le score mis à jour dans la console
+
     console.log("Score:", this.score);
   }
   

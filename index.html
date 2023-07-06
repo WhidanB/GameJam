@@ -101,14 +101,14 @@
   <button id="start-button" onclick="location.href='jeu.html'">START</button>
 
   <script>
-    // Fonction pour afficher le titre avec un effet de fondu
+   
     function showTitle() {
       var title = document.getElementById("title");
       title.style.display = "block";
       title.style.animation = "rotate-zoom 3s forwards";
     }
 
-    // Fonction pour afficher les traces de pas une par une
+
     function showFootprints() {
       var footprints = document.getElementsByClassName("footprint");
       for (var i = 0; i < footprints.length; i++) {
@@ -120,14 +120,14 @@
       }
     }
 
-    // Fonction pour afficher le bouton Start
+   
     function showStartButton() {
     
       var startButton = document.getElementById("start-button");
       startButton.style.display = "block";
     }
 
-    // Appel des fonctions lorsque la page se charge
+   
     window.onload = function () {
       showTitle();
       setTimeout(showFootprints, 2000);

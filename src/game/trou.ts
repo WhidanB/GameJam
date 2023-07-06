@@ -9,21 +9,21 @@ export default class Trou extends Phaser.GameObjects.Container {
     constructor(scene: Phaser.Scene, x: number, y: number) {
         super(scene, x, y);
     
-        // Get CursorKeys Instance
+
 
     
-        // Create a rocketbear Sprite:
+
         this.trou = scene.add
           .sprite(0, 0, TextureKeys.Trou)
           .setOrigin(0.5, 1)
     
-        // Add the Rocketbear as a child of Container:
+
         this.add(this.trou);
     
-        // Add a physics body:
+
         scene.physics.add.existing(this);
     
-        // Adjust physics body size and offset:
+
         const body = this.body as Phaser.Physics.Arcade.Body;
         body.setSize(80, 40);
         body.setOffset(-40, -40);
