@@ -25,8 +25,8 @@ export default class essaim extends Phaser.GameObjects.Container {
     
 
         const body = this.body as Phaser.Physics.Arcade.Body;
-        body.setSize(80, 145);
-        body.setOffset(-30, -200);
+        body.setSize(40, 45);
+        body.setOffset(-20, -40);
     
 
 
