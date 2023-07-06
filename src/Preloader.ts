@@ -10,10 +10,12 @@ export default class Preloader extends Phaser.Scene {
 
   preload() {
     //load background image
-    this.load.image(TextureKeys.Background, "house/polar.png");
+    this.load.image(TextureKeys.Background, "house/background2.png");
     this.load.image(TextureKeys.Essaim, "house/essaim.png");
     this.load.image(TextureKeys.Banquise, "house/banquise.png" );
     this.load.image(TextureKeys.Sapin, "house/SAPIN.png");
+    this.load.image(TextureKeys.Grotte, "house/grotte.png");
+    this.load.image(TextureKeys.Trou, "house/trou.png")
     
 
     //lad sprite sheet with texturePacker:
