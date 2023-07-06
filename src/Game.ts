@@ -17,6 +17,8 @@ export default class Game extends Phaser.Scene {
 
   private background!: Phaser.GameObjects.TileSprite;
 
+
+
   create() {
 
     const width = this.scale.width;
@@ -28,30 +30,48 @@ export default class Game extends Phaser.Scene {
       .setOrigin(0, 0)
       .setScrollFactor(0, 0);
 
-    const bear = new Bear(this, width * 0.15, height);
-    this.add.existing(bear);
-    
-
-    const body = bear.body as Phaser.Physics.Arcade.Body;
-    body.setCollideWorldBounds(true);
-    body.setVelocityX(600);
-
-    this.trous = this.physics.add.group({
-      classType: Trou
+      
+      this.sapins = this.physics.add.group({
+      classType: sapin
     })
+    
     for(let i=0; i<9; i++){
-      const x = Phaser.Math.Between(200, 5360)
+      const x = Phaser.Math.Between(500, 5360)
       const y = height
 
-      const trou = this.trous.get(x, y, 'platform')
+      const sapin = this.sapins.get(x, y, 'platform')
 
-      const bodyTrou = trou.body as Phaser.Physics.Arcade.Body;
-      bodyTrou.setCollideWorldBounds(true);
-      bodyTrou.updateFromGameObject()
+      const bodySapin = sapin.body as Phaser.Physics.Arcade.Body;
+      bodySapin.setCollideWorldBounds(true);
+      bodySapin.updateFromGameObject()
 
   }
+
+  this.trous = this.physics.add.group({
+    classType: Trou
+  })
+  for(let i=0; i<9; i++){
+    const x = Phaser.Math.Between(500, 5360)
+    const y = height
+    
+    const trou = this.trous.get(x, y, 'platform')
+    
+    const bodyTrou = trou.body as Phaser.Physics.Arcade.Body;
+    bodyTrou.setCollideWorldBounds(true);
+    bodyTrou.updateFromGameObject()
+    
+  }
+  const bear = new Bear(this, width * 0.15, height);
+  this.add.existing(bear);
+
+  
+
+  const body = bear.body as Phaser.Physics.Arcade.Body;
+  body.setCollideWorldBounds(true);
+  body.setVelocityX(175);
   this.physics.add.collider(this.trous, this.trous);
-  this.physics.add.overlap(bear, this.trous, )
+  this.physics.add.overlap(bear, this.trous, this.bearDeath)
+  this.physics.add.overlap(this.trous, this.trous)
   
   const grotte = new Grotte(this, 5740, height);
   this.add.existing(grotte)
@@ -72,6 +92,10 @@ export default class Game extends Phaser.Scene {
   }
 
   bearDeath(){
+
+  }
+
+  removeTrou(){
 
   }
 

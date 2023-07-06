@@ -30,8 +30,8 @@ export default class Bear extends Phaser.GameObjects.Container {
 
     // Adjust physics body size and offset:
     const body = this.body as Phaser.Physics.Arcade.Body;
-    body.setSize(80, 145);
-    body.setOffset(-30, -200);
+    body.setSize(60, 145);
+    body.setOffset(-20, -200);
 
     // Add space key event handler
     scene.input.keyboard.on('keydown-SPACE', () => {
@@ -53,7 +53,8 @@ export default class Bear extends Phaser.GameObjects.Container {
     const body = this.body as Phaser.Physics.Arcade.Body;
 
     if (body.blocked.down) {
-      body.setVelocityY(-600);
+      body.setVelocityY(-500);
+      
       this.bear.play(AnimationKeys.BearJump);
       this.isJumping = true;
 

@@ -1,5 +1,5 @@
 import Phaser, { Scene } from "phaser";
-
+import Game from "../Game";
 import TextureKeys from "../consts/TextureKeys";
 import AnimationKeys from "../consts/AnimationKeys";
 
@@ -28,7 +28,7 @@ export default class Trou extends Phaser.GameObjects.Container {
         body.setSize(80, 40);
         body.setOffset(-40, -40);
     
-        // Add space key event handler
+  
 
       }
 
