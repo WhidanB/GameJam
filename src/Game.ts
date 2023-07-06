@@ -28,7 +28,7 @@ export default class Game extends Phaser.Scene {
       .setScrollFactor(0, 0);
 
       
-      this.bear = new Bear(this, width * 0.15, height);
+      this.bear = new Bear(this, width * 0.15, height).setDepth(20);
       this.add.existing(this.bear);
       
       const body = this.bear.body as Phaser.Physics.Arcade.Body;
@@ -94,7 +94,7 @@ export default class Game extends Phaser.Scene {
     })
     this.physics.add.collider(this.sapins, this.essaims)
     
-    const grotte = new Grotte(this, 5740, height);
+    const grotte = new Grotte(this, 5740, height).setDepth(21);
     this.add.existing(grotte);
     
     const bodyGrotte = grotte.body as Phaser.Physics.Arcade.Body;
