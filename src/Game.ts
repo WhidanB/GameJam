@@ -6,6 +6,8 @@ import Bear from "./game/Bear";
 import Trou from "./game/trou"
 import essaim from "./game/essaim";
 import sapin from "./game/sapin";
+import Grotte from "./game/grotte";
+
 
 
 export default class Game extends Phaser.Scene {
@@ -32,14 +34,31 @@ export default class Game extends Phaser.Scene {
 
     const body = bear.body as Phaser.Physics.Arcade.Body;
     body.setCollideWorldBounds(true);
-    body.setVelocityX(100);
+    body.setVelocityX(600);
 
-    const trou = new Trou(this, width, height);
-    this.add.existing(trou)
+    this.trous = this.physics.add.group({
+      classType: Trou
+    })
+    for(let i=0; i<9; i++){
+      const x = Phaser.Math.Between(200, 5360)
+      const y = height
 
-    const bodyTrou = trou.body as Phaser.Physics.Arcade.Body;
-    
+      const trou = this.trous.get(x, y, 'platform')
 
+      const bodyTrou = trou.body as Phaser.Physics.Arcade.Body;
+      bodyTrou.setCollideWorldBounds(true);
+      bodyTrou.updateFromGameObject()
+
+  }
+  this.physics.add.collider(this.trous, this.trous);
+  this.physics.add.overlap(bear, this.trous, )
+  
+  const grotte = new Grotte(this, 5740, height);
+  this.add.existing(grotte)
+  const bodyGrotte = grotte.body as Phaser.Physics.Arcade.Body
+  bodyGrotte.setCollideWorldBounds(true);
+  bodyGrotte.updateFromGameObject();
+  this.physics.add.overlap(bear, grotte, this.gameWin, undefined, this)
 
 
     this.physics.world.setBounds(0, 0, 5760, height - 30);
@@ -50,6 +69,16 @@ export default class Game extends Phaser.Scene {
 
   update() {
     this.background.setTilePosition(this.cameras.main.scrollX);
+  }
+
+  bearDeath(){
+
+  }
+
+  gameWin(){
+
+    this.add.image(5000, 200, TextureKeys.End)
+
   }
 
 }

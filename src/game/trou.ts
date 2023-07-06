@@ -25,8 +25,8 @@ export default class Trou extends Phaser.GameObjects.Container {
     
         // Adjust physics body size and offset:
         const body = this.body as Phaser.Physics.Arcade.Body;
-        body.setSize(80, 145);
-        body.setOffset(-30, -200);
+        body.setSize(80, 40);
+        body.setOffset(-40, -40);
     
         // Add space key event handler
 

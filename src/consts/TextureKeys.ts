@@ -6,7 +6,8 @@ enum TextureKeys {
   Sapin = "sapin",
   Bear = "bear",
   Grotte = "grotte",
-  Trou = "trou"
+  Trou = "trou",
+  End = "end"
 }
 
 export default TextureKeys;
