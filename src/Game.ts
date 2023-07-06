@@ -4,6 +4,8 @@ import AnimationKeys from "./consts/AnimationKeys";
 import TextureKeys from "./consts/TextureKeys";
 import Bear from "./game/Bear";
 import Trou from "./game/trou"
+import essaim from "./game/essaim";
+import sapin from "./game/sapin";
 
 
 export default class Game extends Phaser.Scene {
@@ -14,11 +16,11 @@ export default class Game extends Phaser.Scene {
   private background!: Phaser.GameObjects.TileSprite;
 
   create() {
-    //store the width and height of the game screen:
+
     const width = this.scale.width;
     const height = this.scale.height;
 
-    //add background, setting it to the size of the game screen and fixed to the camera:
+
     this.background = this.add
       .tileSprite(0, 0, width, height, TextureKeys.Background)
       .setOrigin(0, 0)
@@ -30,13 +32,15 @@ export default class Game extends Phaser.Scene {
 
     const body = bear.body as Phaser.Physics.Arcade.Body;
     body.setCollideWorldBounds(true);
+    body.setVelocityX(100);
 
     const trou = new Trou(this, width, height);
     this.add.existing(trou)
+
+    const bodyTrou = trou.body as Phaser.Physics.Arcade.Body;
     
 
-    //Set bear x velocity:
-    body.setVelocityX(100);
+
 
     this.physics.world.setBounds(0, 0, 5760, height - 30);
 
