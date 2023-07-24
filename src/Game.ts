@@ -3,8 +3,8 @@ import SceneKeys from "./consts/SceneKeys";
 import AnimationKeys from "./consts/AnimationKeys";
 import TextureKeys from "./consts/TextureKeys";
 import Bear from "./game/Bear";
-import Trou from "./game/Trou";
-import Grotte from "./game/Grotte";
+import Trou from "./game/trou";
+import Grotte from "./game/grotte";
 import sapin from "./game/sapin";
 import essaim from "./game/essaim";
 
@@ -12,8 +12,10 @@ export default class Game extends Phaser.Scene {
   private background!: Phaser.GameObjects.TileSprite;
   private bear!: Bear;
   private trous!: Phaser.Physics.Arcade.Group;
+  private sapins!: Phaser.Physics.Arcade.Group;
+  private essaims!: Phaser.Physics.Arcade.Group;
   public score = 0;
-  public scoreText;
+  public scoreText = undefined;
   constructor() {
     super(SceneKeys.Game);
   }
@@ -49,6 +51,8 @@ export default class Game extends Phaser.Scene {
       const bodyTrou = trou.body as Phaser.Physics.Arcade.Body;
       bodyTrou.setCollideWorldBounds(true);
       bodyTrou.updateFromGameObject();
+      bodyTrou.setSize(70, 20);
+      bodyTrou.setOffset(-40, -20);
     }
 
     this.sapins = this.physics.add.group({
