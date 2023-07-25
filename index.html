@@ -1,142 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Menu</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-image: url("public/Titre/background.png");
-      background-size: 100% 100%;
-      background-position: center;
-      background-attachment: fixed;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Aurora's Quest</title>
+</head>
 
-    #title {
-      display: none;
-      margin-top: 100px;
-      text-align: center;
-    }
-
-    #title img {
-      opacity: 1;
-      animation: fade-in 2s forwards;
-    }
-
-    .footprint {
-      display: none;
-      height: 600px;
-      position: relative;
-      transform: rotate(180deg);
-      animation: show-footprints 1s ease-in-out;
-    }
-
-    @keyframes show-footprints {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-
-    #start-button {
-      display: none;
-      margin-top: -80px;
-      width: 450px;
-      height: 120px;
-      font-size: 70px;
-      color: black;
-      background-color: #08d6be;
-      border: none;
-      border-radius: 20px;
-      animation: blink 1.8s infinite;
-      cursor: pointer;
-      text-shadow: 2px 2px 0 #873900, 4px 4px 0 #963F00, 5px 5px 0 #A74600;
-    }
-
-    @keyframes blink {
-      0% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-
-    @keyframes rotate-zoom {
-      0% {
-        transform: rotate(0deg) scale(1);
-      }
-      50% {
-        transform: rotate(360deg) scale(1.2);
-      }
-      100% {
-        transform: rotate(0deg) scale(1);
-      }
-    }
-  </style>
-<link rel="stylesheet" href="https://127.0.0.1:49915/stylesheet?id=MNBvWiqis7qi322E"></head>
 <body>
-  <div id="title">
-    <img src="public/Titre/titre.png" alt="Titre">
-  </div>
-
-  <div id="footprints-container">
-    <img class="footprint" src="public/Titre/pas.png" alt="Pas 1">
-  </div>
-
-  <audio autoplay loop>
-    <source src="public/Titre/Beat_Vibe.mp3" type="audio/mp3">
-  </audio>
-
-  <button id="start-button" onclick="location.href='jeu.html'">START</button>
-
-  <script>
-   
-    function showTitle() {
-      var title = document.getElementById("title");
-      title.style.display = "block";
-      title.style.animation = "rotate-zoom 3s forwards";
-    }
-
-
-    function showFootprints() {
-      var footprints = document.getElementsByClassName("footprint");
-      for (var i = 0; i < footprints.length; i++) {
-        (function (index) {
-          setTimeout(function () {
-            footprints[index].style.display = "inline-block";
-          }, 1000 * index);
-        })(i);
-      }
-    }
-
-   
-    function showStartButton() {
-    
-      var startButton = document.getElementById("start-button");
-      startButton.style.display = "block";
-    }
-
-   
-    window.onload = function () {
-      showTitle();
-      setTimeout(showFootprints, 2000);
-      setTimeout(showStartButton, 4000);
-    };
-  </script>
+	<audio autoplay loop>
+        <source src="./public/house/Up_In_My_Jam.mp3" type="audio/mp3">
+      </audio>
+	<div id="app"></div>
+	<script type="module" src="src/main.ts"></script>
 </body>
+
 </html>
-
-
-
-
